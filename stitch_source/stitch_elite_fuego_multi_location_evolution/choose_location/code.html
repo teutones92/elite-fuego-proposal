@@ -1,0 +1,320 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Elite Fuego - Select Location</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fuego-gradient-text {
+            background: linear-gradient(135deg, #FF4500 0%, #FF8C00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .fuego-glow:hover {
+            box-shadow: 0px 0px 15px rgba(255, 69, 0, 0.4);
+        }
+        .location-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .location-card:active {
+            transform: scale(0.98);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#e5e2e1",
+                      "surface-gray": "#242424",
+                      "on-background": "#e2e2e2",
+                      "velocity-orange": "#FF5F1F",
+                      "pitch-black": "#000000",
+                      "on-secondary-fixed-variant": "#474646",
+                      "on-tertiary-fixed-variant": "#474746",
+                      "on-surface": "#e2e2e2",
+                      "primary": "#ffb5a0",
+                      "tertiary": "#c8c6c5",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "surface-container-lowest": "#0c0f0f",
+                      "surface": "#121414",
+                      "surface-tint": "#ffb5a0",
+                      "fuego-gradient": "linear-gradient(135deg, #FF4500 0%, #FF8C00 100%)",
+                      "secondary": "#c8c6c5",
+                      "outline": "#ad887e",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "inverse-primary": "#b12d00",
+                      "on-secondary-container": "#bab8b7",
+                      "on-error-container": "#ffdad6",
+                      "inverse-surface": "#e2e2e2",
+                      "on-surface-variant": "#e7bdb2",
+                      "error-container": "#93000a",
+                      "on-primary-fixed-variant": "#872000",
+                      "on-primary-container": "#541100",
+                      "secondary-container": "#4a4949",
+                      "primary-fixed": "#ffdbd1",
+                      "on-secondary": "#313030",
+                      "surface-container-low": "#1a1c1c",
+                      "surface-bright": "#37393a",
+                      "surface-container-high": "#282a2b",
+                      "secondary-fixed": "#e5e2e1",
+                      "on-tertiary-fixed": "#1b1b1c",
+                      "surface-container-highest": "#333535",
+                      "tertiary-container": "#929090",
+                      "surface-container": "#1e2020",
+                      "background": "#121414",
+                      "primary-container": "#ff5625",
+                      "surface-variant": "#333535",
+                      "surface-dim": "#121414",
+                      "error": "#ffb4ab",
+                      "primary-fixed-dim": "#ffb5a0",
+                      "inverse-on-surface": "#2f3131",
+                      "on-primary-fixed": "#3b0900",
+                      "on-tertiary": "#303030",
+                      "on-error": "#690005",
+                      "on-tertiary-container": "#2a2a2a",
+                      "outline-variant": "#5d4038",
+                      "on-primary": "#601400"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "1.5rem",
+                      "stack-sm": "0.5rem",
+                      "margin-desktop": "2.5rem",
+                      "section-gap": "4rem",
+                      "margin-mobile": "1rem",
+                      "stack-md": "1rem"
+              },
+              "fontFamily": {
+                      "metric-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "display-xl": ["Inter"],
+                      "label-bold": ["Inter"]
+              },
+              "fontSize": {
+                      "metric-md": ["24px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                      "label-bold": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-pitch-black text-on-surface selection:bg-velocity-orange selection:text-pitch-black min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-3 left-4 right-4 z-50 bg-surface-container-lowest border border-surface-gray flex justify-between items-center px-4 h-20 rounded-xl shadow-2xl">
+  <div class="flex items-center gap-4">
+    <div class="w-12 h-12 bg-surface-container-highest rounded-xl flex items-center justify-center">
+      <span class="material-symbols-outlined text-velocity-orange" data-icon="menu">menu</span>
+    </div>
+    <div class="flex flex-col">
+      <span class="text-[10px] font-black text-velocity-orange uppercase tracking-widest leading-none mb-1">ELITE FUEGO PITCHING</span>
+      <h1 class="font-headline-lg-mobile text-headline-lg-mobile font-black text-white leading-none">Location</h1>
+      <span class="text-[10px] font-label-bold text-on-surface-variant uppercase mt-1">Demo Account</span>
+    </div>
+  </div>
+  <div class="flex items-center">
+    <button class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center hover:bg-surface-gray transition-colors">
+      <span class="material-symbols-outlined text-velocity-orange" data-icon="account_circle">account_circle</span>
+    </button>
+  </div>
+</header>
+<main class="mt-24 px-margin-mobile md:px-margin-desktop py-stack-md max-w-7xl mx-auto">
+<!-- Hero Search / Title -->
+<section class="py-stack-md">
+<h2 class="font-headline-lg text-headline-lg uppercase tracking-tighter mb-1">SELECT FACILITY</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Find an Elite Fuego lab near you to start your session.</p>
+</section>
+<!-- Recent Locations -->
+<section class="mb-section-gap">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-velocity-orange text-sm" data-icon="history">history</span>
+<h3 class="font-label-bold text-label-bold uppercase text-on-surface-variant">RECENT LOCATIONS</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-stack-md">
+<!-- Recent Card 1 -->
+<div class="location-card bg-surface border border-surface-gray p-4 flex items-center gap-4 hover:border-velocity-orange cursor-pointer group relative overflow-hidden rounded-xl">
+<div class="absolute top-0 right-0 p-2 opacity-20 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-velocity-orange" data-icon="star" data-weight="fill" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+</div>
+<div class="w-16 h-16 bg-surface-container-highest flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-velocity-orange text-3xl" data-icon="stadium">stadium</span>
+</div>
+<div>
+<h4 class="font-metric-md text-metric-md uppercase">Austin HQ</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-[10px] font-label-bold text-on-surface-variant uppercase">Open Now • 84°F</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- All Facilities (Bento Grid) -->
+<section>
+<div class="flex items-center justify-between mb-stack-md border-b border-surface-gray pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-velocity-orange text-sm" data-icon="map">map</span>
+<h3 class="font-label-bold text-label-bold uppercase text-on-surface-variant">AVAILABLE TRAINING GROUNDS</h3>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-surface-container-highest text-[10px] font-label-bold uppercase border border-outline-variant">List</button>
+<button class="px-3 py-1 bg-pitch-black text-[10px] font-label-bold uppercase border border-surface-gray text-on-surface-variant">Map</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Location Card: Dallas North -->
+<div class="location-card bg-surface border border-surface-gray flex flex-col group rounded-xl overflow-hidden">
+<div class="relative h-40 w-full overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-pitch-black to-transparent z-10"></div>
+<div class="absolute bottom-3 left-4 z-20">
+<span class="bg-velocity-orange text-pitch-black text-[10px] font-black px-2 py-0.5 mb-1 inline-block">PREMIUM HUB</span>
+<h4 class="font-metric-md text-metric-md uppercase leading-none">Dallas North</h4>
+</div>
+<div class="absolute top-3 right-4 z-20 bg-pitch-black/80 backdrop-blur px-2 py-1 flex items-center gap-2 border border-surface-gray">
+<span class="material-symbols-outlined text-sm text-velocity-orange" data-icon="cloud">cloud</span>
+<span class="text-[10px] font-bold">76°F</span>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest">
+<div class="flex justify-between items-end mb-3">
+<div>
+<p class="text-[10px] font-label-bold text-on-surface-variant uppercase mb-1">Occupancy</p>
+<div class="flex items-center gap-1">
+<div class="h-1.5 w-6 bg-velocity-orange"></div>
+<div class="h-1.5 w-6 bg-velocity-orange"></div>
+<div class="h-1.5 w-6 bg-velocity-orange"></div>
+<div class="h-1.5 w-6 bg-surface-container-highest"></div>
+<div class="h-1.5 w-6 bg-surface-container-highest"></div>
+<span class="text-[10px] font-label-bold ml-2">60%</span>
+</div>
+</div>
+<button class="bg-white text-pitch-black font-black px-3 py-1.5 text-[10px] hover:bg-velocity-orange transition-colors active:scale-95">BOOK MOUND</button>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-3 border-t border-surface-gray">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="radar">radar</span>
+<span class="text-[10px] font-label-bold text-on-surface-variant uppercase">Rapsodo 3.0</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="videocam">videocam</span>
+<span class="text-[10px] font-label-bold text-on-surface-variant uppercase">Edgertronic</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Location Card: Houston East -->
+<div class="location-card bg-surface border border-surface-gray flex flex-col group rounded-xl overflow-hidden">
+<div class="relative h-40 w-full overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-pitch-black to-transparent z-10"></div>
+<div class="absolute bottom-3 left-4 z-20">
+<h4 class="font-metric-md text-metric-md uppercase leading-none">Houston East</h4>
+</div>
+<div class="absolute top-3 right-4 z-20 bg-pitch-black/80 backdrop-blur px-2 py-1 flex items-center gap-2 border border-surface-gray">
+<span class="material-symbols-outlined text-sm text-velocity-orange" data-icon="sunny">sunny</span>
+<span class="text-[10px] font-bold">92°F</span>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest">
+<div class="flex justify-between items-end mb-3">
+<div>
+<p class="text-[10px] font-label-bold text-on-surface-variant uppercase mb-1">Occupancy</p>
+<div class="flex items-center gap-1">
+<div class="h-1.5 w-6 bg-velocity-orange"></div>
+<div class="h-1.5 w-6 bg-velocity-orange"></div>
+<div class="h-1.5 w-6 bg-velocity-orange"></div>
+<div class="h-1.5 w-6 bg-velocity-orange"></div>
+<div class="h-1.5 w-6 bg-velocity-orange"></div>
+<span class="text-[10px] font-label-bold ml-2">95%</span>
+</div>
+</div>
+<button class="bg-pitch-black text-on-surface border border-surface-gray font-black px-3 py-1.5 text-[10px] hover:bg-surface-gray transition-colors active:scale-95">WAITLIST</button>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-3 border-t border-surface-gray">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="fitness_center">fitness_center</span>
+<span class="text-[10px] font-label-bold text-on-surface-variant uppercase">Full Weightroom</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="medical_services">medical_services</span>
+<span class="text-[10px] font-label-bold text-on-surface-variant uppercase">PT On-Site</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Location Card: Scottsdale -->
+<div class="location-card bg-surface border border-surface-gray flex flex-col group rounded-xl overflow-hidden">
+<div class="relative h-40 w-full overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-pitch-black to-transparent z-10"></div>
+<div class="absolute bottom-3 left-4 z-20">
+<span class="bg-white text-pitch-black text-[10px] font-black px-2 py-0.5 mb-1 inline-block">SPRING BASE</span>
+<h4 class="font-metric-md text-metric-md uppercase leading-none">Scottsdale</h4>
+</div>
+<div class="absolute top-3 right-4 z-20 bg-pitch-black/80 backdrop-blur px-2 py-1 flex items-center gap-2 border border-surface-gray">
+<span class="material-symbols-outlined text-sm text-velocity-orange" data-icon="sunny">sunny</span>
+<span class="text-[10px] font-bold">101°F</span>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest">
+<div class="flex justify-between items-end mb-3">
+<div>
+<p class="text-[10px] font-label-bold text-on-surface-variant uppercase mb-1">Occupancy</p>
+<div class="flex items-center gap-1">
+<div class="h-1.5 w-6 bg-velocity-orange"></div>
+<div class="h-1.5 w-6 bg-surface-container-highest"></div>
+<div class="h-1.5 w-6 bg-surface-container-highest"></div>
+<div class="h-1.5 w-6 bg-surface-container-highest"></div>
+<div class="h-1.5 w-6 bg-surface-container-highest"></div>
+<span class="text-[10px] font-label-bold ml-2">20%</span>
+</div>
+</div>
+<button class="bg-white text-pitch-black font-black px-3 py-1.5 text-[10px] hover:bg-velocity-orange transition-colors active:scale-95">BOOK MOUND</button>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-3 border-t border-surface-gray">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="restaurant">restaurant</span>
+<span class="text-[10px] font-label-bold text-on-surface-variant uppercase">Fuel Bar</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="remove_done">remove_done</span>
+<span class="text-[10px] font-label-bold text-on-surface-variant uppercase">Recovery Pods</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+
+<!-- Micro-interaction script -->
+<script>
+        document.querySelectorAll('.location-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Subtle haptic-like scale effect on container already in CSS
+            });
+        });
+    </script>
+
+
+</body></html>

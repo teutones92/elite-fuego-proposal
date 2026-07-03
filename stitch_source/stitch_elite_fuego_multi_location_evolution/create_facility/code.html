@@ -1,0 +1,347 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Elite Fuego Pitching - Create Facility</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-gray": "#242424",
+                "error-container": "#93000a",
+                "velocity-orange": "#FF5F1F",
+                "secondary-fixed-dim": "#c8c6c5",
+                "pitch-black": "#000000",
+                "on-surface-variant": "#e7bdb2",
+                "inverse-surface": "#e2e2e2",
+                "surface-variant": "#333535",
+                "outline": "#ad887e",
+                "on-surface": "#e2e2e2",
+                "on-primary-fixed": "#3b0900",
+                "on-secondary-fixed-variant": "#474646",
+                "surface-container": "#1e2020",
+                "tertiary-fixed": "#e5e2e1",
+                "surface-tint": "#ffb5a0",
+                "inverse-primary": "#b12d00",
+                "surface-dim": "#121414",
+                "error": "#ffb4ab",
+                "surface": "#121414",
+                "secondary": "#c8c6c5",
+                "primary-fixed": "#ffdbd1",
+                "secondary-fixed": "#e5e2e1",
+                "primary-fixed-dim": "#ffb5a0",
+                "on-tertiary": "#303030",
+                "background": "#121414",
+                "tertiary-container": "#929090",
+                "on-secondary-fixed": "#1c1b1b",
+                "tertiary-fixed-dim": "#c8c6c5",
+                "on-primary": "#601400",
+                "surface-container-high": "#282a2b",
+                "on-tertiary-fixed-variant": "#474746",
+                "surface-container-lowest": "#0c0f0f",
+                "on-error-container": "#ffdad6",
+                "surface-container-low": "#1a1c1c",
+                "on-primary-fixed-variant": "#872000",
+                "on-background": "#e2e2e2",
+                "surface-bright": "#37393a",
+                "secondary-container": "#4a4949",
+                "on-tertiary-container": "#2a2a2a",
+                "inverse-on-surface": "#2f3131",
+                "on-tertiary-fixed": "#1b1b1c",
+                "fuego-gradient": "linear-gradient(135deg, #FF4500 0%, #FF8C00 100%)",
+                "primary-container": "#ff5625",
+                "on-error": "#690005",
+                "tertiary": "#c8c6c5",
+                "primary": "#ffb5a0",
+                "on-secondary-container": "#bab8b7",
+                "on-secondary": "#313030",
+                "outline-variant": "#5d4038",
+                "surface-container-highest": "#333535",
+                "on-primary-container": "#541100"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "gutter": "1.5rem",
+                "margin-mobile": "1rem",
+                "stack-md": "1rem",
+                "margin-desktop": "2.5rem",
+                "stack-sm": "0.5rem",
+                "section-gap": "4rem"
+            },
+            "fontFamily": {
+                "headline-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "label-bold": ["Inter"],
+                "body-lg": ["Inter"],
+                "display-xl": ["Inter"],
+                "metric-md": ["Inter"],
+                "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "label-bold": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                "metric-md": ["24px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #121414;
+            color: #e2e2e2;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(30, 32, 32, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 53, 53, 0.5);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0c0f0f;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #333535;
+            border-radius: 10px;
+        }
+        .fuego-ring:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 95, 31, 0.5);
+            border-color: #FF5F1F;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-background border-b border-surface-variant docked full-width top-0 sticky z-50 flex justify-between items-center w-full px-margin-mobile h-16">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-100 text-velocity-orange flex items-center justify-center">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile uppercase text-velocity-orange">CREATE FACILITY</h1>
+</div>
+<button class="active:scale-95 duration-100 text-velocity-orange flex items-center justify-center">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto custom-scrollbar pb-32">
+<div class="max-w-5xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-md space-y-gutter">
+<!-- Section 1: Basic Info -->
+<section class="glass-card rounded-xl p-6">
+<div class="flex items-center gap-2 mb-6 text-velocity-orange">
+<span class="material-symbols-outlined">info</span>
+<h2 class="font-label-bold text-label-bold tracking-widest uppercase">Basic Info</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-label-bold text-secondary">FACILITY NAME</label>
+<input class="bg-pitch-black border border-surface-variant rounded-xl p-3 text-body-md fuego-ring transition-all placeholder:text-surface-variant" placeholder="e.g. Fuego HQ North" type="text">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-label-bold text-secondary">DISPLAY NAME</label>
+<input class="bg-pitch-black border border-surface-variant rounded-xl p-3 text-body-md fuego-ring transition-all placeholder:text-surface-variant" placeholder="e.g. Fuego Elite" type="text">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-label-bold text-secondary">FACILITY CODE</label>
+<input class="bg-pitch-black border border-surface-variant rounded-xl p-3 text-body-md fuego-ring transition-all placeholder:text-surface-variant font-mono" placeholder="ELITE-01" type="text">
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="font-label-bold text-label-bold text-secondary">DESCRIPTION</label>
+<textarea class="bg-pitch-black border border-surface-variant rounded-xl p-3 text-body-md fuego-ring transition-all placeholder:text-surface-variant" placeholder="Describe the training environment..." rows="3"></textarea>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-label-bold text-secondary">STATUS</label>
+<div class="flex items-center h-full">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-velocity-orange"></div>
+<span class="ml-3 font-body-md text-on-background">Active</span>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Contact Info -->
+<section class="glass-card rounded-xl p-6">
+<div class="flex items-center gap-2 mb-6 text-velocity-orange">
+<span class="material-symbols-outlined">contact_support</span>
+<h2 class="font-label-bold text-label-bold tracking-widest uppercase">Contact Info</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-label-bold text-secondary">PHONE</label>
+<input class="bg-pitch-black border border-surface-variant rounded-xl p-3 text-body-md fuego-ring transition-all placeholder:text-surface-variant" placeholder="+1 (555) 000-0000" type="tel">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-label-bold text-secondary">EMAIL</label>
+<input class="bg-pitch-black border border-surface-variant rounded-xl p-3 text-body-md fuego-ring transition-all placeholder:text-surface-variant" placeholder="contact@facility.com" type="email">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-label-bold text-secondary">WEBSITE</label>
+<input class="bg-pitch-black border border-surface-variant rounded-xl p-3 text-body-md fuego-ring transition-all placeholder:text-surface-variant" placeholder="https://..." type="url">
+</div>
+</div>
+</section>
+<!-- Section 3: Address -->
+<section class="glass-card rounded-xl p-6">
+<div class="flex items-center gap-2 mb-6 text-velocity-orange">
+<span class="material-symbols-outlined">location_on</span>
+<h2 class="font-label-bold text-label-bold tracking-widest uppercase">Address</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="flex flex-col gap-2 lg:col-span-2">
+<label class="font-label-bold text-label-bold text-secondary">STREET</label>
+<input class="bg-pitch-black border border-surface-variant rounded-xl p-3 text-body-md fuego-ring transition-all placeholder:text-surface-variant" placeholder="123 Pitcher Lane" type="text">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-label-bold text-secondary">CITY</label>
+<input class="bg-pitch-black border border-surface-variant rounded-xl p-3 text-body-md fuego-ring transition-all placeholder:text-surface-variant" placeholder="Phoenix" type="text">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-label-bold text-secondary">STATE</label>
+<input class="bg-pitch-black border border-surface-variant rounded-xl p-3 text-body-md fuego-ring transition-all placeholder:text-surface-variant" placeholder="AZ" type="text">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-label-bold text-secondary">ZIP CODE</label>
+<input class="bg-pitch-black border border-surface-variant rounded-xl p-3 text-body-md fuego-ring transition-all placeholder:text-surface-variant" placeholder="85001" type="text">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-label-bold text-secondary">COUNTRY</label>
+<select class="bg-pitch-black border border-surface-variant rounded-xl p-3 text-body-md fuego-ring transition-all appearance-none">
+<option>United States</option>
+<option>Canada</option>
+<option>Japan</option>
+<option>Dominican Republic</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Section 4: Management & Finance -->
+<section class="glass-card rounded-xl p-6">
+<div class="flex items-center gap-2 mb-6 text-velocity-orange">
+<span class="material-symbols-outlined">payments</span>
+<h2 class="font-label-bold text-label-bold tracking-widest uppercase">Management &amp; Finance</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-label-bold text-secondary">FACILITY MANAGER</label>
+<select class="bg-pitch-black border border-surface-variant rounded-xl p-3 text-body-md fuego-ring transition-all">
+<option>Select a Manager</option>
+<option>Coach Miller</option>
+<option>Coach Hernandez</option>
+<option>Coach Sato</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-label-bold text-secondary">STRIPE CONNECTED ID</label>
+<div class="relative">
+<input class="w-full bg-pitch-black border border-surface-variant rounded-xl p-3 pl-10 text-body-md fuego-ring transition-all placeholder:text-surface-variant" placeholder="acct_..." type="text">
+<span class="material-symbols-outlined absolute left-3 top-3 text-surface-variant text-body-lg">link</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Settings -->
+<section class="glass-card rounded-xl p-6">
+<div class="flex items-center gap-2 mb-6 text-velocity-orange">
+<span class="material-symbols-outlined">settings_suggest</span>
+<h2 class="font-label-bold text-label-bold tracking-widest uppercase">Settings</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-label-bold text-secondary">TIME ZONE</label>
+<select class="bg-pitch-black border border-surface-variant rounded-xl p-3 text-body-md fuego-ring transition-all">
+<option>(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+<option>(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+<option>(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Section 6: Branding -->
+<section class="glass-card rounded-xl p-6">
+<div class="flex items-center gap-2 mb-6 text-velocity-orange">
+<span class="material-symbols-outlined">photo_library</span>
+<h2 class="font-label-bold text-label-bold tracking-widest uppercase">Branding</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-4">
+<label class="font-label-bold text-label-bold text-secondary uppercase">Facility Logo</label>
+<div class="group relative aspect-square w-40 border-2 border-dashed border-surface-variant rounded-xl flex flex-col items-center justify-center hover:border-velocity-orange transition-colors cursor-pointer bg-pitch-black/20 overflow-hidden">
+<span class="material-symbols-outlined text-4xl text-surface-variant group-hover:text-velocity-orange transition-colors">add_photo_alternate</span>
+<span class="font-label-bold text-[10px] mt-2 text-surface-variant group-hover:text-velocity-orange transition-colors">UPLOAD LOGO</span>
+<!-- Placeholder Image hidden until upload -->
+<img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-10 transition-opacity" data-alt="A professional, high-contrast sports facility logo with bold typography and a stylized baseball icon, using a dark charcoal and vibrant velocity orange color scheme against a black background. The style is modern, aggressive, and premium, evocative of elite professional sports brands." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5ISASrdN0n9Nut5fNa8TdMvp8EIiJ9QZ5oUxivehmqbvqrEksp18tUarFpi2yUC-oIoc_fiX7XtT8drZHDMqs9OLIge85b9znia8OKpVM49DsIgKlGGutkNBPIZYhj8HAilybMqEEGzUBmGfTdwEk3hhTXV40RG1WS8RhiV2V-bi8YRtR7E8fKCdBQIj-mk84glma56S72j5vPON8Q8Vf8brPW-bUwXvwnwsL76wEKTUmONKcnJnbtqW0I1RyeQCgtFfE_BKB1XwJ">
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<label class="font-label-bold text-label-bold text-secondary uppercase">Banner Image</label>
+<div class="group relative aspect-video w-full border-2 border-dashed border-surface-variant rounded-xl flex flex-col items-center justify-center hover:border-velocity-orange transition-colors cursor-pointer bg-pitch-black/20 overflow-hidden">
+<span class="material-symbols-outlined text-4xl text-surface-variant group-hover:text-velocity-orange transition-colors">landscape</span>
+<span class="font-label-bold text-[10px] mt-2 text-surface-variant group-hover:text-velocity-orange transition-colors">UPLOAD BANNER (1920x600)</span>
+<img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-10 transition-opacity" data-alt="A cinematic wide-angle photograph of an elite, dark-mode indoor pitching facility. Rows of high-tech radar systems and cameras are mounted above sleek synthetic turf mounds. The lighting is dramatic, with orange LED accents cutting through the deep charcoal environment. The mood is disciplined and high-performance, capturing the essence of professional training." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn58nfcIC2hGErVKr5uv3Npq93GJDHtSEgQc92zhMbqqWc2N3C6NDBFd-g0w-gMy_E_uoYBowoFnwR5PmqHM-g9QH_IicYtEKeCjWqeJVBA6p4fOVmbbRGJRSGuB6IEhMP9x_GBkjQVJs54Vjka-em5GIrQhADlxLGeTm4GkhnY5nLhQraWl6NTaJQpcDsv8RmsvvBs6lyFK6Zs2ThmJqK6oVP7wQkGM2NUXhvmGhai1a4z9G9V97xlq7QKIIUFbTd9_9xef1vO9R1">
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Actions Bar -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-surface-container-lowest border-t border-surface-variant px-margin-mobile py-4 shadow-2xl">
+<div class="max-w-5xl mx-auto flex items-center justify-end gap-4">
+<button class="px-10 py-3 rounded-xl border border-surface-variant text-secondary font-label-bold uppercase tracking-widest hover:bg-white/10 active:scale-95 transition-all">CANCEL</button>
+<button class="px-10 py-3 rounded-xl bg-velocity-orange text-pitch-black font-black uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-velocity-orange/20 fuego-ring">SAVE</button>
+</div>
+</footer>
+<!-- Bottom Nav Bar (Suppressed for transactional screen as per logic, but if needed, following structure) -->
+<!-- We prioritize the Action Bar here because this is a "Create" task-focused journey -->
+<script>
+        // Micro-interaction for inputs
+        document.querySelectorAll('input, select, textarea').forEach(el => {
+            el.addEventListener('focus', () => {
+                el.parentElement.querySelector('label').classList.replace('text-secondary', 'text-velocity-orange');
+            });
+            el.addEventListener('blur', () => {
+                el.parentElement.querySelector('label').classList.replace('text-velocity-orange', 'text-secondary');
+            });
+        });
+
+        // Simple Toggle interaction for visual feedback
+        const toggle = document.querySelector('input[type="checkbox"]');
+        toggle.addEventListener('change', (e) => {
+            const label = e.target.nextElementSibling.nextElementSibling;
+            label.textContent = e.target.checked ? 'Active' : 'Inactive';
+        });
+    </script>
+
+
+
+
+</body></html>
