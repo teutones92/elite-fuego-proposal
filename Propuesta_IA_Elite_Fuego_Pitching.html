@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Propuesta de IA - Elite Fuego Pitching</title>
+  <style>
+    @page { size: letter; margin: 20mm; }
+    body { font-family: Arial, sans-serif; color: #243044; line-height: 1.45; font-size: 11pt; max-width: 780px; margin: 36px auto; padding: 0 24px; }
+    h1 { color: #17243b; font-size: 26pt; margin-bottom: 6px; }
+    h2 { color: #bb402a; font-size: 15pt; margin-top: 25px; }
+    h3 { color: #17243b; font-size: 12pt; }
+    .subtitle { font-size: 16pt; margin-top: 0; }
+    .meta { color: #667085; font-size: 10pt; }
+    .highlight { background: #f3f5f8; border-left: 4px solid #bb402a; padding: 14px 18px; }
+    table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 10pt; }
+    th, td { border: 1px solid #d8dee7; padding: 9px; text-align: left; vertical-align: top; }
+    th { background: #f3f5f8; color: #17243b; }
+    li { margin-bottom: 5px; }
+    .small { font-size: 9pt; color: #667085; }
+    @media print {
+      body { max-width: none; margin: 0; padding: 0; }
+      h2, h3 { break-after: avoid; }
+      tr, .highlight { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Elite Fuego Pitching</h1>
+  <p class="subtitle">Generador inteligente de rutinas con IA</p>
+  <p class="meta">Propuesta preliminar | 6 de octubre de 2026 | Importes en USD</p>
+
+  <div class="highlight">
+    <strong>De la evaluación del atleta a una rutina lista para revisar y asignar.</strong>
+    <p>Aprovecharemos los assessments, las carpetas de videos y las rutinas que ya existen en la aplicación para reducir el trabajo manual de los coaches. El coach conservará el control y la aprobación final.</p>
+  </div>
+
+  <h2>1. El problema que vamos a resolver</h2>
+  <p>Actualmente, preparar el entrenamiento de un atleta requiere revisar su assessment, elegir ejercicios, agregar los videos correspondientes y organizar la rutina por días. Repetir este proceso para cada atleta consume tiempo que el coach podría dedicar al seguimiento y al entrenamiento.</p>
+  <p>La nueva función preparará una propuesta inicial personalizada. No reemplazará la metodología de Elite Fuego Pitching: la utilizará como base para organizar el contenido disponible.</p>
+
+  <h2>2. Cómo funcionará</h2>
+  <ol>
+    <li><strong>Seleccionar:</strong> el coach elige al atleta, su assessment, los días disponibles y el período de entrenamiento, inicialmente una semana.</li>
+    <li><strong>Generar:</strong> al presionar “Generar rutina desde assessment”, el sistema identifica las prioridades y selecciona videos del catálogo autorizado.</li>
+    <li><strong>Organizar:</strong> distribuye los ejercicios por días siguiendo las reglas acordadas y considera las rutinas anteriores para controlar repeticiones.</li>
+    <li><strong>Revisar:</strong> el coach puede cambiar videos, reorganizar la propuesta o solicitar una nueva generación.</li>
+    <li><strong>Asignar:</strong> después de aprobarla, la rutina se guarda y queda disponible para el atleta dentro del sistema actual.</li>
+  </ol>
+  <p><strong>Ejemplo ilustrativo:</strong> si la evaluación identifica un área prioritaria, el sistema buscará ejercicios en las carpetas relacionadas y propondrá cómo distribuirlos durante la semana. La selección y la frecuencia dependerán de los criterios definidos por los coaches.</p>
+
+  <h2>3. Aprovecharemos la organización actual de los videos</h2>
+  <p>Según la información proporcionada, los videos ya están organizados en carpetas con nombres relacionados con las áreas del assessment. <strong>Esa organización es una base de clasificación útil; no se plantea reclasificar todo el catálogo desde cero.</strong></p>
+  <p>En la revisión inicial confirmaremos cómo consultar esa relación dentro de la aplicación y definiremos:</p>
+  <ul>
+    <li>Qué resultados del assessment deben llevar a cada carpeta o grupo de ejercicios.</li>
+    <li>Cómo elegir entre varios videos de una misma carpeta.</li>
+    <li>Cuántos ejercicios asignar por sesión y cómo distribuirlos por días.</li>
+    <li>Cuándo repetir un ejercicio y cuándo usar una alternativa.</li>
+    <li>Qué restricciones deben respetarse y qué hacer si falta contenido adecuado.</li>
+  </ul>
+  <p>Si faltan etiquetas o relaciones necesarias, se identificarán antes de cerrar el alcance. La carga o clasificación manual extensa de contenido se cotizará aparte.</p>
+
+  <h2>4. Tecnología y APIs propuestas</h2>
+  <table>
+    <thead><tr><th>Servicio</th><th>Uso en esta función</th></tr></thead>
+    <tbody>
+      <tr><td><strong>OpenAI Responses API<br>GPT-4.1 mini</strong></td><td>Preparar una propuesta estructurada a partir del assessment, las reglas y una selección de videos candidatos. La calidad se validará con casos revisados por coaches.</td></tr>
+      <tr><td><strong>Firebase Cloud Functions</strong></td><td>Verificar permisos, consultar la información, llamar a la IA y validar la propuesta antes de guardarla.</td></tr>
+      <tr><td><strong>Cloud Firestore</strong></td><td>Consultar assessments, carpetas, videos y rutinas previas; guardar las rutinas aprobadas.</td></tr>
+      <tr><td><strong>Google Cloud Secret Manager</strong></td><td>Proteger la credencial de OpenAI fuera de la aplicación móvil.</td></tr>
+    </tbody>
+  </table>
+  <p><strong>No se enviarán los archivos de video para analizarlos.</strong> Esta versión usará información textual como categorías, descripciones e identificadores. No requiere entrenar un modelo propio, búsqueda web ni una base vectorial dedicada. La API se paga por consumo, independientemente de una suscripción de ChatGPT.</p>
+  <p>El modelo propondrá una rutina; el backend comprobará que los videos existan, estén autorizados y cumplan las reglas configuradas. Si no hay contenido suficiente o falla la generación, se informará al coach sin asignar una rutina incompleta automáticamente.</p>
+
+  <h2>5. Costo estimado de uso de la IA</h2>
+  <p>Precios oficiales consultados para GPT-4.1 mini el 6 de octubre de 2026: <strong>US$0.40 por millón de tokens de entrada</strong> y <strong>US$1.60 por millón de tokens de salida</strong>. Los tokens son unidades de texto utilizadas para medir el consumo.</p>
+  <p>Ejemplo de una generación con 10,000 tokens enviados y 2,000 generados:</p>
+  <p><strong>(10,000 / 1,000,000 × US$0.40) + (2,000 / 1,000,000 × US$1.60) = US$0.0072.</strong></p>
+  <table>
+    <thead><tr><th>Generaciones al mes</th><th>OpenAI: costo ilustrativo</th></tr></thead>
+    <tbody>
+      <tr><td>100</td><td>US$0.72</td></tr>
+      <tr><td>500</td><td>US$3.60</td></tr>
+      <tr><td>1,000</td><td>US$7.20</td></tr>
+      <tr><td>5,000</td><td>US$36.00</td></tr>
+    </tbody>
+  </table>
+  <p>Estos ejemplos suponen una llamada con ese volumen de texto por generación. No son una tarifa fija ni una garantía: el tamaño del contenido, las regeneraciones, los reintentos y cualquier llamada adicional pueden aumentar el consumo. Las tarifas del proveedor pueden cambiar.</p>
+  <p><strong>Para el piloto:</strong> reservar provisionalmente US$10–25 mensuales para OpenAI y ajustar el presupuesto según el consumo medido. Esta reserva no incluye Firebase ni mantenimiento.</p>
+  <p>Cloud Functions, Firestore, Secret Manager y servicios auxiliares pueden generar cargos adicionales según ejecución, lecturas, escrituras, registros y uso de red. Su costo incremental se calculará con el consumo real del proyecto; no se garantiza que sea gratuito.</p>
+  <p>Se incluirán límites de solicitudes y tamaño de generación, medición de consumo y un tope de uso en el backend. Las alertas de facturación no sustituyen estos controles. Las cuentas de servicios deberán estar bajo control del cliente.</p>
+
+  <h2>6. Alcance de la primera versión</h2>
+  <ul>
+    <li>Generación semanal para un atleta a la vez desde el assessment seleccionado.</li>
+    <li>Reutilización de carpetas y videos existentes, con las relaciones necesarias acordadas.</li>
+    <li>Distribución por días y control de repetición según las reglas definidas.</li>
+    <li>Vista previa editable, regeneración y aprobación antes de asignar.</li>
+    <li>Integración con las rutinas actuales y protección contra duplicados por reintentos.</li>
+    <li>Permisos por usuario y organización, controles de consumo y manejo explícito de errores.</li>
+    <li>Pruebas con casos acordados y dos rondas de ajustes dentro del alcance definido.</li>
+  </ul>
+  <p><strong>No incluye:</strong> análisis biomecánico de video, diagnóstico o predicción de lesiones, generación masiva, cambios automáticos a rutinas ya asignadas, nuevas cargas de videos ni clasificación manual extensa del catálogo.</p>
+  <p><strong>Privacidad:</strong> antes del piloto se aprobará el tratamiento de datos con el proveedor externo, especialmente si hay atletas menores de edad. Se enviará únicamente información necesaria, evitando identificadores personales cuando no sean requeridos.</p>
+
+  <h2>7. Inversión y plazo</h2>
+  <table>
+    <thead><tr><th>Concepto</th><th>Estimación</th></tr></thead>
+    <tbody>
+      <tr><td>Tarifa de desarrollo</td><td><strong>US$25 por hora</strong></td></tr>
+      <tr><td>Esfuerzo preliminar</td><td>80–140 horas</td></tr>
+      <tr><td>Rango de inversión</td><td>US$2,000–3,500</td></tr>
+      <tr><td>Presupuesto objetivo</td><td><strong>US$2,750, equivalente a 110 horas</strong></td></tr>
+      <tr><td>Revisión inicial</td><td>US$250 por 10 horas, incluidos en el presupuesto objetivo si continúa el proyecto</td></tr>
+      <tr><td>Plazo orientativo</td><td>4–6 semanas desde el acuerdo de alcance y disponibilidad de accesos y criterios</td></tr>
+    </tbody>
+  </table>
+  <p>La revisión inicial confirmará la relación assessment–carpetas–videos, las reglas de entrenamiento y las integraciones necesarias. Al finalizar se entregará el alcance y presupuesto definitivo para aprobación antes de continuar. El presupuesto objetivo no constituye todavía un precio fijo.</p>
+  <p>Los consumos de APIs e infraestructura se pagan aparte. El mantenimiento posterior y las funcionalidades adicionales no están incluidos. Cualquier ampliación del alcance deberá aprobarse antes de ejecutarse.</p>
+
+  <h2>8. Cómo comprobaremos el resultado</h2>
+  <p>Durante el piloto verificaremos que las propuestas utilicen videos válidos, respeten las reglas acordadas y solo se asignen con aprobación del coach. También probaremos que fallos o reintentos no creen asignaciones incompletas o duplicadas.</p>
+  <p>Mediremos el tiempo de preparación manual frente al tiempo de revisión de una propuesta, los ajustes que necesita el coach y el costo real por generación. No se promete un porcentaje de ahorro ni resultados deportivos antes de validar el piloto.</p>
+  <div class="highlight">
+    <strong>Resultado esperado:</strong> que el coach deje de construir cada rutina desde cero y pueda concentrarse en revisar, personalizar y acompañar al atleta, aprovechando la inversión que ya existe en Elite Fuego Pitching.
+  </div>
+
+  <h3>Fuentes de referencia</h3>
+  <p class="small">OpenAI: <a href="https://developers.openai.com/api/docs/models/gpt-4.1-mini">https://developers.openai.com/api/docs/models/gpt-4.1-mini</a><br>
+  Firebase: <a href="https://firebase.google.com/pricing">https://firebase.google.com/pricing</a><br>
+  Propuesta preliminar sujeta a revisión técnica, validación con coaches y aceptación del alcance.</p>
+</body>
+</html>
